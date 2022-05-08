@@ -5,7 +5,7 @@ import { ModalsContext } from '../contexts/ModalsProvider';
 import { TodosContext } from '../contexts/TodosProvider';
 
 import "../App.css";
-import { Button } from './styled/Components.styled';
+import { Button, SubmitButton, StyledCard, CardBody } from './styled/Components.styled';
 
 const Todos = () => {
   const { addEditModal, setAddEditModal } = useContext(ModalsContext);
@@ -35,14 +35,13 @@ const Todos = () => {
         <Button onClick={() => setAddEditModal(true)}>Add Todo</Button>
       </div>
       <div>
-
         {todos.map((todo, i) => (
-          <div key={i}>
+          <StyledCard key={i}>
             <h3>{todo.title}</h3>
             <p>{todo.text}</p>
-            <button onClick={() => editTodo(todo)}>Edit</button>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-          </div>
+            <SubmitButton padding={"4px 40px"} onClick={() => editTodo(todo)}>Edit</SubmitButton>
+            <SubmitButton padding={"4px 40px"} color={"#fff"} bg={"#ff5429"} onClick={() => deleteTodo(todo.id)}>Delete</SubmitButton>
+          </StyledCard>
         ))}
       </div>
 

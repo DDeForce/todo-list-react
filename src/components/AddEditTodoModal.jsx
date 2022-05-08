@@ -43,7 +43,7 @@ const AddEditTodoModal = ({ existingTodo }) => {
   return (
     <PopupContainer>
       <PopupInner>
-        {existingTodo == null ? <h3>Add Modal</h3> : <h3>Edit Modal</h3>}
+        {existingTodo == null ? <h3>ADD MODAL</h3> : <h3>Edit Modal</h3>}
         <form>
           {existingTodo == null ?
             <>
@@ -62,7 +62,8 @@ const AddEditTodoModal = ({ existingTodo }) => {
             <SubmitButton onClick={editTodo}>Edit Todo</SubmitButton >
           }
 
-          <button onClick={() => setAddEditModal(false)}>Cancel</button>
+          <SubmitButton color={"#fff"}
+            bg={"#ff5429"} onClick={() => setAddEditModal(false)}>Cancel</SubmitButton>
         </div>
       </PopupInner >
     </PopupContainer>

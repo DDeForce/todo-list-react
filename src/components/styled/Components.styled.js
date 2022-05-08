@@ -30,7 +30,7 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
-  padding: 8px 60px;
+  padding: ${({ padding }) => padding || "8px 60px"};
   background-color: ${({ bg }) => bg || "#fff"};
   color: ${({ color }) => color || "#333"};
   margin: 5px;
@@ -116,4 +116,11 @@ export const PopupInner = styled.div`
       text-decoration: none;
     }
   }
+`;
+
+export const StyledCard = styled.div`
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.14);
+  max-width: fit-content;
+  background: #ece9e6;
+  margin: 10px;
 `;
