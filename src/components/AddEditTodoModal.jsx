@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { v4 as uuid } from 'uuid';
 
 import { ModalsContext } from "../contexts/ModalsProvider"
 import { TodosContext } from '../contexts/TodosProvider';
@@ -12,8 +13,8 @@ const AddEditTodoModal = () => {
   const [text, setText] = useState("");
 
   const addTodo = () => {
-    console.log("todos: ", todos)
-    setTodos([...todos, { title: title, text: text }]);
+    const generateId = uuid();
+    setTodos([...todos, { id: generateId, title: title, text: text }]);
 
     setTitle("");
     setText("")
