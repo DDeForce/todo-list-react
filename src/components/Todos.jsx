@@ -8,13 +8,23 @@ const Todos = () => {
   const { addEditModal, setAddEditModal } = useContext(ModalsContext);
   const { todos, setTodos } = useContext(TodosContext);
 
+  const [currentTodo, setCurrentTodo] = useState(null);
+
+
+  const editTodo = todo => {
+    setCurrentTodo(todo);
+    setAddEditModal(true);
+  }
+
   const deleteTodo = id => {
     setTodos([...todos].filter(todo => todo.id !== id));
   }
 
   useEffect(() => {
-    console.log(todos)
-  }, [todos])
+    if (!addEditModal) {
+      setCurrentTodo(null)
+    }
+  }, [addEditModal])
   return (
     <div>
       <h2>My Todos</h2>
@@ -27,14 +37,14 @@ const Todos = () => {
           <div key={i}>
             <h3>{todo.title}</h3>
             <p>{todo.text}</p>
-            <button onClick={() => setAddEditModal(true)}>Edit</button>
+            <button onClick={() => editTodo(todo)}>Edit</button>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </div>
         ))}
       </div>
 
       {addEditModal &&
-        <AddEditTodoModal />
+        <AddEditTodoModal existingTodo={currentTodo} />
       }
     </div>
   )
