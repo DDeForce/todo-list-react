@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+
+import { ModalsContext } from "../contexts/ModalsProvider"
 
 const AddEditTodoModal = () => {
+  const { setAddEditModal } = useContext(ModalsContext);
   const [todo, setTodo] = useState({});
+
+  const addTodo = () => {
+
+    setAddEditModal(false);
+  }
+
   return (
     <div>
       <h3>Add Modal</h3>
-      <div>
+      <form>
         <input placeholder='title'></input>
         <textarea placeholder='text for todo...'></textarea>
-      </div>
+      </form>
       <div>
-        <button>Add Todo</button>
-        <button>Cancel</button>
+        <button onClick={addTodo}>Add Todo</button>
+        <button onClick={() => setAddEditModal(false)}>Cancel</button>
       </div>
     </div>
   )

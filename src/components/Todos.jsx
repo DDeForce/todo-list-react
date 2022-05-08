@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AddEditTodoModal from './AddEditTodoModal';
 
+import { ModalsContext } from "../contexts/ModalsProvider"
+
 const Todos = () => {
+  const { addEditModal, setAddEditModal } = useContext(ModalsContext);
   const [todos, setTodos] = useState([{
     title: "todo",
     text: "something..."
   }]);
 
 
+
   return (
     <div>
       <h2>My Todos</h2>
       <div>
-        <button>Add Todo</button>
+        <button onClick={() => setAddEditModal(true)}>Add Todo</button>
       </div>
       <div>
 
@@ -26,7 +30,9 @@ const Todos = () => {
         ))}
       </div>
 
-      <AddEditTodoModal />
+      {addEditModal &&
+        <AddEditTodoModal />
+      }
     </div>
   )
 }
