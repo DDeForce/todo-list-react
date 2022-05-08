@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 
-import { ModalsContext } from "../contexts/ModalsProvider"
+import { ModalsContext } from '../contexts/ModalsProvider';
 import { TodosContext } from '../contexts/TodosProvider';
 
 const AddEditTodoModal = ({ existingTodo }) => {
   const { setAddEditModal } = useContext(ModalsContext);
-
   const { todos, setTodos } = useContext(TodosContext);
 
   const [title, setTitle] = useState("");
@@ -17,7 +16,7 @@ const AddEditTodoModal = ({ existingTodo }) => {
     setTodos([...todos, { id: generateId, title: title, text: text }]);
 
     setTitle("");
-    setText("")
+    setText("");
     setAddEditModal(false);
   }
 
@@ -29,6 +28,7 @@ const AddEditTodoModal = ({ existingTodo }) => {
     }
 
     setTodos(prev => prev.map(todo => (todo.id === existingTodo.id ? updatedTodo : todo)));
+    setAddEditModal(false);
   }
 
   useEffect(() => {
@@ -45,10 +45,10 @@ const AddEditTodoModal = ({ existingTodo }) => {
         {existingTodo == null ?
           <>
             <input type='text' placeholder='title' onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea placeholder='text for todo...' onChange={(e) => setText(e.target.value)}></textarea>
+            <textarea type='text' placeholder='text for todo...' onChange={(e) => setText(e.target.value)}></textarea>
           </> : <>
             <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
+            <textarea type='text' value={text} onChange={(e) => setText(e.target.value)}></textarea>
           </>
         }
       </form>

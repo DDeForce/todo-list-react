@@ -1,5 +1,3 @@
-import "./App.css";
-
 import { ModalsProvider } from "./contexts/ModalsProvider";
 import { TodosProvider } from "./contexts/TodosProvider";
 
