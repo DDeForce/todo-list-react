@@ -3,11 +3,19 @@ import { TodosProvider } from "./contexts/TodosProvider";
 
 import Todos from "./components/Todos";
 
+// css styled-components
+import { ThemeProvider } from "styled-components";
+import { theme } from "./css/Theme";
+import GlobalStyles from "./css/Global";
+
 function App() {
   return (
     <ModalsProvider>
       <TodosProvider>
-        <Todos />
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Todos />
+        </ThemeProvider>
       </TodosProvider>
     </ModalsProvider>
   );

@@ -4,6 +4,8 @@ import { v4 as uuid } from 'uuid';
 import { ModalsContext } from '../contexts/ModalsProvider';
 import { TodosContext } from '../contexts/TodosProvider';
 
+import { PopupContainer, PopupInner, SubmitButton } from './styled/Components.styled'
+
 const AddEditTodoModal = ({ existingTodo }) => {
   const { setAddEditModal } = useContext(ModalsContext);
   const { todos, setTodos } = useContext(TodosContext);
@@ -39,29 +41,31 @@ const AddEditTodoModal = ({ existingTodo }) => {
   }, [existingTodo])
 
   return (
-    <div>
-      {existingTodo == null ? <h3>Add Modal</h3> : <h3>Edit Modal</h3>}
-      <form>
-        {existingTodo == null ?
-          <>
-            <input type='text' placeholder='title' onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea type='text' placeholder='text for todo...' onChange={(e) => setText(e.target.value)}></textarea>
-          </> : <>
-            <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}></input>
-            <textarea type='text' value={text} onChange={(e) => setText(e.target.value)}></textarea>
-          </>
-        }
-      </form>
-      <div>
-        {existingTodo == null ?
-          <button onClick={addTodo}>Add Todo</button>
-          :
-          <button onClick={editTodo}>Edit Todo</button>
-        }
+    <PopupContainer>
+      <PopupInner>
+        {existingTodo == null ? <h3>Add Modal</h3> : <h3>Edit Modal</h3>}
+        <form>
+          {existingTodo == null ?
+            <>
+              <input type='text' placeholder='title' onChange={(e) => setTitle(e.target.value)}></input>
+              <textarea type='text' placeholder='text for todo...' onChange={(e) => setText(e.target.value)}></textarea>
+            </> : <>
+              <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}></input>
+              <textarea type='text' value={text} onChange={(e) => setText(e.target.value)}></textarea>
+            </>
+          }
+        </form>
+        <div>
+          {existingTodo == null ?
+            <SubmitButton onClick={addTodo}>Add Todo</SubmitButton >
+            :
+            <SubmitButton onClick={editTodo}>Edit Todo</SubmitButton >
+          }
 
-        <button onClick={() => setAddEditModal(false)}>Cancel</button>
-      </div>
-    </div >
+          <button onClick={() => setAddEditModal(false)}>Cancel</button>
+        </div>
+      </PopupInner >
+    </PopupContainer>
   )
 }
 

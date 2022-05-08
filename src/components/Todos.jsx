@@ -5,7 +5,7 @@ import { ModalsContext } from '../contexts/ModalsProvider';
 import { TodosContext } from '../contexts/TodosProvider';
 
 import "../App.css";
-
+import { Button } from './styled/Components.styled';
 
 const Todos = () => {
   const { addEditModal, setAddEditModal } = useContext(ModalsContext);
@@ -32,7 +32,7 @@ const Todos = () => {
     <div className='App'>
       <h2>My Todos</h2>
       <div>
-        <button onClick={() => setAddEditModal(true)}>Add Todo</button>
+        <Button onClick={() => setAddEditModal(true)}>Add Todo</Button>
       </div>
       <div>
 
