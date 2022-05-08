@@ -10,7 +10,8 @@ const Todos = () => {
 
 
   useEffect(() => {
-  }, [])
+    console.log(todos)
+  }, [todos])
   return (
     <div>
       <h2>My Todos</h2>
