@@ -1,13 +1,16 @@
 import "./App.css";
 
 import { ModalsProvider } from "./contexts/ModalsProvider";
+import { TodosProvider } from "./contexts/TodosProvider";
 
 import Todos from "./components/Todos";
 
 function App() {
   return (
     <ModalsProvider>
-      <Todos />
+      <TodosProvider>
+        <Todos />
+      </TodosProvider>
     </ModalsProvider>
   );
 }
