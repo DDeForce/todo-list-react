@@ -8,12 +8,8 @@ const Todos = () => {
   const { addEditModal, setAddEditModal } = useContext(ModalsContext);
   const { todos, setTodos } = useContext(TodosContext);
 
-  const editTodo = todo => {
-
-  }
-
-  const deleteTodo = todo => {
-
+  const deleteTodo = id => {
+    setTodos([...todos].filter(todo => todo.id !== id));
   }
 
   useEffect(() => {
@@ -31,8 +27,8 @@ const Todos = () => {
           <div key={i}>
             <h3>{todo.title}</h3>
             <p>{todo.text}</p>
-            <button onClick={editTodo(todo)}>Edit</button>
-            <button onClick={deleteTodo(todo)}>Delete</button>
+            <button onClick={() => setAddEditModal(true)}>Edit</button>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </div>
         ))}
       </div>
